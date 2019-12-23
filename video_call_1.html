@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Stringee video call test</title>
+		<meta charset="utf-8">
+
+		<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+		<script type="text/javascript" src="js/socket.io-2.1.1.js"></script>
+		<script type="text/javascript" src="js/StringeeSDK-1.5.1.js"></script>
+
+		<script type="text/javascript">
+			var access_token = "eyJjdHkiOiJzdHJpbmdlZS1hcGk7dj0xIiwidHlwIjoiSldUIiwiYWxnIjoiSFMyNTYifQ.eyJqdGkiOiJTS1oxZ2wyUTlEa3c0bHhtT0VFbnkwd2UwUkM2Unk0bE4tMTU3NzA3MTkyMyIsImlzcyI6IlNLWjFnbDJROURrdzRseG1PRUVueTB3ZTBSQzZSeTRsTiIsImV4cCI6MTU3NzA3NTUyMywidXNlcklkIjoiYmFuZyJ9.xfJO3i0idQOh6sjK176P6v8vjHVz734KCMnvyGPligw";
+		</script>
+		<script type="text/javascript" src="js/video_call.js"></script>
+
+		<style>
+			#answerBtn, #rejectBtn {
+				background-color: green;
+				color: white;
+			}
+			#incoming-call-div {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body>
+
+		<div>
+			<input id="callTo" type="text" name="toUsername" style="width: 200px;" placeholder="Call username" value="user_2">
+
+			<button id="callBtn" onclick="testMakeCall(false)">Voice call</button>
+			<button id="videoCallBtn" onclick="testMakeCall(true)">Video call</button>
+			<button id="hangupBtn" onclick="testHangupCall()">Hangup</button>
+
+			<button id="switchVoiceVideoBtn" onclick="upgradeToVideoCall()">UpgradeToVideoCall</button>
+			<button id="switchVoiceVideoBtn" onclick="switchVoiceVideoCall()">switchVoiceVideoCall</button>
+
+			<button id="muteBtn" onclick="mute()">Mute</button>
+			<button id="enableVideoBtn" onclick="enableVideo()">Enable/disable Video</button>
+		</div>
+
+		<div>
+			<br/>
+			Logged in: <span id="loggedUserId" style="color: red">Not logged</span>
+		</div>
+
+		<div>
+			<br/>
+			Call status: <span id="callStatus" style="color: red">Not started</span>
+		</div>
+
+		<div id="incoming-call-div">
+			<br />
+			<button id="answerBtn" onclick="testAnswerCall()">Answer</button>
+			<button id="rejectBtn" onclick="testRejectCall()">Reject</button>
+		</div>
+
+		<div>
+			<video id="localVideo" playsinline autoplay muted style="width: 350px;background: #424141;"></video>
+			<video id="remoteVideo" playsinline autoplay style="width: 350px;background: #424141;"></video>
+		</div>
+
+	</body>
+
+</html>
